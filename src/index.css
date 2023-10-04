@@ -1,15 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,600;6..12,800&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --font-family: 'Nunito Sans', sans-serif;
+  --fs-small: 14px;
+  --fs-medium: 14px;
+  --fw-light: 300;
+  --fw-normal: 600;
+  --fw-bold: 800;
+  --shadow: 2px 2px 8px 0 rgba(5, 5, 6, 0.2);
+}
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+body[data-theme = 'dark'] {
+  --font-color: hsl(0, 0%, 100%);
+  --bg-color: hsl(207, 26%, 17%);
+  --primary--color: hsl(209, 23%, 22%);
+  --input-color: hsl(0, 0%, 100%);
+}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+body[data-theme = 'light'] {
+  --font-color: hsl(200, 15%, 8%);
+  --bg-color: hsl(0, 0%, 98%);
+  --primary--color: hsl(0, 0%, 100%);
+  --input-color: hsl(0, 0%, 52%);
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--font-color);
+  background: var(--bg-color);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-normal);
 }
