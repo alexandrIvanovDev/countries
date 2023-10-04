@@ -4,15 +4,17 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import { Layout } from './components/layout/Layout.tsx';
+import { MainPage } from './pages/MainPage.tsx';
+import { CountryPage } from './pages/CountryPage.tsx';
 
 const routes: RouteObject[] = [
   {
     path: '/',
-    element: <div>Main page</div>,
+    element: <MainPage />,
   },
   {
     path: '/:id',
-    element: <div>Country page</div>,
+    element: <CountryPage />,
   },
 ];
 
