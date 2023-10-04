@@ -9,6 +9,10 @@
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 
+  .icon {
+    font-size: 20px;
+  }
+
   .input {
     background: var(--primary--color);
     color: var(--font-color);

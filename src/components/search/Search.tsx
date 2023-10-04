@@ -11,7 +11,7 @@ type Search = {
 export const Search: FC<Search> = ({ value, onChangeValue }) => {
   return (
     <label className={cl.label}>
-      <IoSearchSharp />
+      <IoSearchSharp className={cl.icon} />
       <input
         type='text'
         placeholder='Search for a country...'
