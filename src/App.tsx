@@ -1,11 +1,7 @@
-import { Header } from './components/header/Header.tsx';
+import { Router } from './router.tsx';
 
 function App() {
-  return (
-    <>
-      <Header />
-    </>
-  );
+  return <Router />;
 }
 
 export default App;
