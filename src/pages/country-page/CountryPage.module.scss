@@ -1,0 +1,39 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  .btnBack {
+    margin: 4rem 0;
+  }
+}
+
+.country {
+  display: flex;
+
+  .flag {
+    width: 500px;
+    height: 350px;
+  }
+
+  .countryInformation {
+    margin: 2rem 5rem;
+
+    .title {
+      font-weight: var(--fw-bold);
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .border {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+
+      .borderBtn  {
+        color: var(--font-color);
+        text-decoration: none;
+      }
+    }
+  }
+}
