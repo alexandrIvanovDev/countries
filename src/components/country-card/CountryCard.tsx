@@ -12,10 +12,9 @@ export const CountryCard: FC<CountryCard> = ({ country }) => {
 
   return (
     <Link to={`/${name.official}`} className={cl.wrapper}>
-      <div className={cl.imgWrapper}></div>
       <img src={flags.png} alt={flags.alt} className={cl.img} />
       <div className={cl.information}>
-        <h3 className={cl.title}>{name.official}</h3>
+        <h3 className={cl.title}>{name.common}</h3>
         <div className={cl.item}>
           <span>Population: </span>
           <span className={cl.common}>{population}</span>
