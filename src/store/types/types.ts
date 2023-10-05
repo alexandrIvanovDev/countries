@@ -2,20 +2,6 @@ export type Country = {
   name: {
     common: string;
     official: string;
-    nativeName: {
-      // lang: {
-      //   official: string;
-      //   common: string;
-      // };
-      // fra: {
-      //   official: string;
-      //   common: string;
-      // };
-      // nld: {
-      //   official: string;
-      //   common: string;
-      // };
-    };
   };
   tld: ['.be'];
   currencies: {
@@ -34,10 +20,6 @@ export type Country = {
   };
   borders: string[];
   area: number;
-  maps: {
-    googleMaps: string;
-    openStreetMaps: string;
-  };
   population: number;
   continents: string[];
   flags: {
