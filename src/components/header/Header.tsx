@@ -20,7 +20,7 @@ export const Header = () => {
     <div className={cl.header}>
       <div className={clContainer.container}>
         <div className={cl.wrapper}>
-          <h1>Where in the world</h1>
+          <h1>Where in the world?</h1>
           <div onClick={toggleTheme} className={cl.themeSwitcher}>
             {theme === 'light' ? <IoMoonOutline /> : <IoMoonSharp />}
             <div>Dark Mode</div>

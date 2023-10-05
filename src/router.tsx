@@ -4,8 +4,8 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import { Layout } from './components/layout/Layout.tsx';
-import { MainPage } from './pages/MainPage.tsx';
-import { CountryPage } from './pages/CountryPage.tsx';
+import { MainPage } from './pages/main-page/MainPage.tsx';
+import { CountryPage } from './pages/country-page/CountryPage.tsx';
 
 const routes: RouteObject[] = [
   {
@@ -13,7 +13,7 @@ const routes: RouteObject[] = [
     element: <MainPage />,
   },
   {
-    path: '/:id',
+    path: '/:name',
     element: <CountryPage />,
   },
 ];

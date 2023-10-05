@@ -1,6 +1,7 @@
 import { Country } from '../../store/types/types.ts';
 import { FC } from 'react';
 import cl from './CountryCard.module.scss';
+import { Link } from 'react-router-dom';
 
 type CountryCard = {
   country: Country;
@@ -10,7 +11,7 @@ export const CountryCard: FC<CountryCard> = ({ country }) => {
   const { name, capital, region, population, flags } = country;
 
   return (
-    <div className={cl.wrapper}>
+    <Link to={`/${name.official}`} className={cl.wrapper}>
       <div className={cl.imgWrapper}></div>
       <img src={flags.png} alt={flags.alt} className={cl.img} />
       <div className={cl.information}>
@@ -28,6 +29,6 @@ export const CountryCard: FC<CountryCard> = ({ country }) => {
           <span className={cl.common}>{capital}</span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
