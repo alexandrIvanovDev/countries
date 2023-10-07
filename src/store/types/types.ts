@@ -1,8 +1,5 @@
 export type Country = {
-  name: {
-    common: string;
-    official: string;
-  };
+  name: CountryName;
   tld: ['.be'];
   currencies: {
     EUR: {
@@ -22,9 +19,27 @@ export type Country = {
   area: number;
   population: number;
   continents: string[];
-  flags: {
-    png: string;
-    svg: string;
-    alt: string;
-  };
+  flags: CountryFlags;
+};
+
+export type CountryName = {
+  common: string;
+  official: string;
+};
+
+export type CountryFlags = {
+  png: string;
+  svg: string;
+  alt: string;
+};
+
+export type CountryInfo = {
+  name: CountryName;
+  flags: CountryFlags;
+  info: InfoType[];
+};
+
+type InfoType = {
+  title: string;
+  description: string | number | string[];
 };
