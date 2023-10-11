@@ -10,13 +10,15 @@ export const SearchBlock = () => {
     setValue(e.currentTarget.value);
   };
 
-  // const searchCountry = () => {
-  //   // request
-  // };
+  const searchCountry = () => {};
 
   return (
     <div className={cl.wrapper}>
-      <Search value={value} onChangeValue={onChangeValue} />
+      <Search
+        value={value}
+        onChangeValue={onChangeValue}
+        searchCountry={searchCountry}
+      />
       <Select />
     </div>
   );

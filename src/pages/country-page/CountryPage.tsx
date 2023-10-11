@@ -3,7 +3,7 @@ import cl from './CountryPage.module.scss';
 import {
   useGetCountryBorderQuery,
   useGetCountryQuery,
-} from '../../store/srvices/countries.ts';
+} from '../../store/services/countries.ts';
 import { Loader } from '../../components/loader/Loader.tsx';
 import { Button } from '../../components/button/Button.tsx';
 
