@@ -1,7 +1,5 @@
 .countries {
-  display: flex;
-  gap: 5rem;
-  align-items: center;
-  justify-content: flex-start;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  justify-content: space-between;
 }

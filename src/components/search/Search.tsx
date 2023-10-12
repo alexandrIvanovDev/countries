@@ -1,18 +1,15 @@
 import { IoSearchSharp } from 'react-icons/io5';
 import cl from './Search.module.scss';
-import { ChangeEvent, FC, KeyboardEvent } from 'react';
+import { ChangeEvent, FC, memo } from 'react';
 
 type Search = {
   value: string;
-  onChangeValue: (e: ChangeEvent<HTMLInputElement>) => void;
-  searchCountry: () => void;
+  setValue: (value: string) => void;
 };
 
-export const Search: FC<Search> = ({ value, onChangeValue, searchCountry }) => {
-  const onEnterHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      searchCountry();
-    }
+export const Search: FC<Search> = memo(({ value, setValue }) => {
+  const onChangeValue = (e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.currentTarget.value);
   };
 
   return (
@@ -24,8 +21,7 @@ export const Search: FC<Search> = ({ value, onChangeValue, searchCountry }) => {
         className={cl.input}
         value={value}
         onChange={onChangeValue}
-        onKeyDown={onEnterHandler}
       />
     </label>
   );
-};
+});

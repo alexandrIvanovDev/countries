@@ -6,12 +6,39 @@ import { Loader } from '../../components/loader/Loader.tsx';
 import { Country, CountryInfo } from '../../store/types/types.ts';
 import { useEffect, useState } from 'react';
 
+export type Option = {
+  value: string;
+  label: string;
+};
+
+const options: Array<Option> = [
+  { value: 'Africa', label: 'Africa' },
+  { value: 'Americas', label: 'America' },
+  { value: 'Asia', label: 'Asia' },
+  { value: 'Europe', label: 'Europe' },
+  { value: 'Oceania', label: 'Oceania' },
+];
+
 export const MainPage = () => {
   const { data, isLoading } = useGetAllCountriesQuery('');
 
   const [filteredCountries, setFilteredCountries] = useState<Array<Country>>(
     []
   );
+
+  const searchCountry = (title: string, region: string) => {
+    if (!data) return;
+    let countriesData = [...data];
+    if (region) {
+      countriesData = countriesData.filter((c) => c.region.includes(region));
+    }
+    if (title) {
+      countriesData = countriesData.filter((c) =>
+        c.name.common.toLowerCase().includes(title.toLowerCase())
+      );
+    }
+    setFilteredCountries([...countriesData]);
+  };
 
   useEffect(() => {
     if (data) {
@@ -21,10 +48,9 @@ export const MainPage = () => {
 
   return (
     <div>
-      <SearchBlock />
+      <SearchBlock searchCountry={searchCountry} options={options} />
       <div className={cl.countries}>
         {isLoading && <Loader />}
-        {/*{filteredCountries &&*/}
         {filteredCountries.map((c) => {
           const countryInfo: CountryInfo = {
             name: c.name,

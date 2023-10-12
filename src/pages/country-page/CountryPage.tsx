@@ -11,7 +11,7 @@ export const CountryPage = () => {
   const navigate = useNavigate();
   const params = useParams();
 
-  const { data, isLoading, error } = useGetCountryQuery(params.name as string);
+  const { data, isLoading } = useGetCountryQuery(params.name as string);
 
   const country = data && data[0];
 
@@ -28,11 +28,11 @@ export const CountryPage = () => {
     <div>
       {isLoading && <Loader />}
       {borderCountryLoading && <Loader />}
-      {error && (
-        <h3 style={{ textAlign: 'center', margin: '3rem' }}>
-          {error.data.message}
-        </h3>
-      )}
+      {/*{error && (*/}
+      {/*  <h3 style={{ textAlign: 'center', margin: '3rem' }}>*/}
+      {/*    {error.data.message}*/}
+      {/*  </h3>*/}
+      {/*)}*/}
       {country && (
         <div className={cl.wrapper}>
           <div className={cl.btnBack}>

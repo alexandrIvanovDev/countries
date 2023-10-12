@@ -1,25 +1,36 @@
 import { Search } from '../search/Search.tsx';
-import { Select } from '../select/Select.tsx';
 import cl from './SearchBlock.module.scss';
-import { ChangeEvent, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
+import { Option } from '../../pages/main-page/MainPage.tsx';
+import Select, { SingleValue } from 'react-select';
 
-export const SearchBlock = () => {
-  const [value, setValue] = useState('');
+type Props = {
+  searchCountry: (value: string, region: string) => void;
+  options: Array<Option>;
+};
 
-  const onChangeValue = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.currentTarget.value);
+export const SearchBlock: FC<Props> = ({ searchCountry, options }) => {
+  const [searchValue, setSearchValue] = useState('');
+  const [selectedOption, setSelectedOption] = useState('');
+
+  const onChangeSelect = (e: SingleValue<Option>) => {
+    setSelectedOption(e?.value || '');
   };
 
-  const searchCountry = () => {};
+  useEffect(() => {
+    searchCountry(searchValue, selectedOption);
+  }, [searchValue, selectedOption]);
 
   return (
     <div className={cl.wrapper}>
-      <Search
-        value={value}
-        onChangeValue={onChangeValue}
-        searchCountry={searchCountry}
+      <Search value={searchValue} setValue={setSearchValue} />
+      <Select
+        options={options}
+        placeholder='Filter by region'
+        onChange={onChangeSelect}
+        isClearable
+        className={cl.select}
       />
-      <Select />
     </div>
   );
 };

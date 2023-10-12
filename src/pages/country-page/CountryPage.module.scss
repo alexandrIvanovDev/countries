@@ -11,8 +11,9 @@
   display: flex;
 
   .flag {
-    width: 500px;
-    height: 350px;
+    width: 50%;
+    height: 50%;
+    box-shadow: var(--shadow);
   }
 
   .countryInformation {
