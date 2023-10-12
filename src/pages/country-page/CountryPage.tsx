@@ -11,9 +11,7 @@ export const CountryPage = () => {
   const navigate = useNavigate();
   const params = useParams();
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  const { data, isLoading, error } = useGetCountryQuery(params.name);
+  const { data, isLoading, error } = useGetCountryQuery(params.name as string);
 
   const country = data && data[0];
 
