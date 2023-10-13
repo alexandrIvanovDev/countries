@@ -3,6 +3,9 @@ import cl from './SearchBlock.module.scss';
 import { FC, useEffect, useState } from 'react';
 import { Option } from '../../pages/main-page/MainPage.tsx';
 import Select, { SingleValue } from 'react-select';
+import { useAppSelector } from '../../store/store.ts';
+import { useDispatch } from 'react-redux';
+import { changeOption } from '../../store/services/filter.ts';
 
 type Props = {
   searchCountry: (value: string, region: string) => void;
@@ -10,16 +13,25 @@ type Props = {
 };
 
 export const SearchBlock: FC<Props> = ({ searchCountry, options }) => {
-  const [searchValue, setSearchValue] = useState('');
-  const [selectedOption, setSelectedOption] = useState('');
+  const { value, option } = useAppSelector((state) => state.filter);
+
+  const dispatch = useDispatch();
+
+  const [searchValue, setSearchValue] = useState(value);
+  const [selectedOption, setSelectedOption] = useState(option);
 
   const onChangeSelect = (e: SingleValue<Option>) => {
     setSelectedOption(e?.value || '');
+    dispatch(changeOption(e?.value || ''));
   };
 
   useEffect(() => {
+    console.log('mount');
     searchCountry(searchValue, selectedOption);
-  }, [searchValue, selectedOption]);
+    return () => {
+      console.log('unmount');
+    };
+  }, [searchValue, selectedOption, value, option]);
 
   return (
     <div className={cl.wrapper}>
