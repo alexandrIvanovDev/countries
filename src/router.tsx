@@ -13,7 +13,7 @@ const routes: RouteObject[] = [
     element: <MainPage />,
   },
   {
-    path: '/:name',
+    path: '/country/:name',
     element: <CountryPage />,
   },
 ];

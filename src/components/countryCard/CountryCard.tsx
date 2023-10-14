@@ -11,7 +11,7 @@ export const CountryCard: FC<CountryCard> = ({ countryInfo }) => {
   const { name, flags, info } = countryInfo;
 
   return (
-    <Link to={`/${name.official}`} className={cl.wrapper}>
+    <Link to={`/country/${name.official}`} className={cl.wrapper}>
       <img src={flags.png} alt={flags.alt} className={cl.img} />
       <div className={cl.information}>
         <h3 className={cl.title}>{name.common}</h3>

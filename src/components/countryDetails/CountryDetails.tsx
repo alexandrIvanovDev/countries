@@ -4,7 +4,7 @@ import { FC, useEffect, useState } from 'react';
 import cl from './CountryDetails.module.scss';
 import { useGetCountryBorderQuery } from '../../store/services/countries.ts';
 import { Loader } from '../loader/Loader.tsx';
-import { Country } from '../../store/types/types.ts';
+import { Country, InfoType } from '../../store/types/types.ts';
 import { getCurrencies } from '../../utils/getCurrencies.ts';
 import { getLanguages } from '../../utils/getLanguages.ts';
 import { getNativeName } from '../../utils/getNativeName.ts';
@@ -23,17 +23,32 @@ export const CountryDetails: FC<Props> = ({ country }) => {
 
   const borders: Array<string> = country?.borders?.map((b) => b);
 
-  // if (country.borders?.length) {
-  //   borders = country.borders.map((b) => b);
-  // }
-
-  const { data, isLoading } = useGetCountryBorderQuery(borders);
+  const { data, isLoading } = useGetCountryBorderQuery(borders, {
+    skip: !borders,
+  });
 
   useEffect(() => {
     setCurrencies(getCurrencies(country.currencies));
     setLanguages(getLanguages(country.languages));
     setNativeName(getNativeName(country.name.nativeName));
   }, []);
+
+  const info: InfoType[] = [
+    { title: 'Native Name', description: nativeName.join(', ') },
+    {
+      title: 'Population',
+      description: country.population.toLocaleString('en-US'),
+    },
+    { title: 'Region', description: country.region },
+    { title: 'Subregion', description: country.subregion },
+    { title: 'Capital', description: country.capital },
+  ];
+
+  const extraInfo: InfoType[] = [
+    { title: 'Top Level Domain', description: country.tld.join(', ') },
+    { title: 'Currencies', description: currencies.join(', ') },
+    { title: 'Languages', description: languages.join(', ') },
+  ];
 
   return (
     <div>
@@ -60,40 +75,18 @@ export const CountryDetails: FC<Props> = ({ country }) => {
               <h2 className={cl.title}>{country.name.official}</h2>
               <div className={cl.lists}>
                 <ul className={cl.list}>
-                  <li className={cl.listItem}>
-                    Native Name:
-                    <span> {nativeName.join(', ')}</span>
-                  </li>
-                  <li className={cl.listItem}>
-                    Population:
-                    <span> {country.population.toLocaleString()}</span>
-                  </li>
-                  <li className={cl.listItem}>
-                    Region:
-                    <span> {country.region}</span>
-                  </li>
-                  <li className={cl.listItem}>
-                    Subregion:
-                    <span> {country.subregion}</span>
-                  </li>
-                  <li className={cl.listItem}>
-                    Capital:
-                    <span> {country.capital}</span>
-                  </li>
+                  {info.map((info) => (
+                    <li className={cl.listItem} key={info.title}>
+                      {info.title}:<span> {info.description}</span>
+                    </li>
+                  ))}
                 </ul>
                 <ul className={cl.list}>
-                  <li className={cl.listItem}>
-                    Top Level Domain:
-                    <span> {country.tld.join(', ')}</span>
-                  </li>
-                  <li className={cl.listItem}>
-                    Currencies:
-                    <span> {currencies.join(', ')}</span>
-                  </li>
-                  <li className={cl.listItem}>
-                    Languages:
-                    <span> {languages.join(', ')}</span>
-                  </li>
+                  {extraInfo.map((info) => (
+                    <li className={cl.listItem} key={info.title}>
+                      {info.title}:<span> {info.description}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
               <div className={cl.border}>
@@ -101,7 +94,7 @@ export const CountryDetails: FC<Props> = ({ country }) => {
                 {data ? (
                   data.map((b) => (
                     <Link
-                      to={`/${b.name.official}`}
+                      to={`/country/${b.name.official}`}
                       className={cl.borderBtn}
                       key={b.name.official}
                     >

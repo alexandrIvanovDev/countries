@@ -48,7 +48,7 @@ export type CountryInfo = {
   info: InfoType[];
 };
 
-type InfoType = {
+export type InfoType = {
   title: string;
   description: string | number | string[];
 };

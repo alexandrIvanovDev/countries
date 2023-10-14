@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import cl from './Layout.module.scss';
-import clContainer from '../header/Container.module.scss';
+import clContainer from '../../styles/Container.module.scss';
 import { Header } from 'src/components/header';
 
 export const Layout = () => {

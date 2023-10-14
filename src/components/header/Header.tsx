@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import cl from './Header.module.scss';
-import clContainer from './Container.module.scss';
+import clContainer from '../../styles/Container.module.scss';
 import { IoMoonOutline, IoMoonSharp } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 

@@ -58,7 +58,7 @@ export const MainPage = () => {
             info: [
               {
                 title: 'Population',
-                description: c.population,
+                description: c.population.toLocaleString('en-US'),
               },
               {
                 title: 'Region',
