@@ -1,7 +1,7 @@
 import { Search } from '../search/Search.tsx';
 import cl from './SearchBlock.module.scss';
 import { FC, useEffect, useState } from 'react';
-import { Option } from '../../pages/main-page/MainPage.tsx';
+import { Option } from 'src/pages/mainPage';
 import Select, { SingleValue } from 'react-select';
 import { useAppSelector } from '../../store/store.ts';
 import { useDispatch } from 'react-redux';
@@ -26,11 +26,11 @@ export const SearchBlock: FC<Props> = ({ searchCountry, options }) => {
   };
 
   useEffect(() => {
-    console.log('mount');
+    // console.log('mount');
     searchCountry(searchValue, selectedOption);
-    return () => {
-      console.log('unmount');
-    };
+    // return () => {
+    //   console.log('unmount');
+    // };
   }, [searchValue, selectedOption, value, option]);
 
   return (

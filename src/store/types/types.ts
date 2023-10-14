@@ -1,36 +1,45 @@
 export type Country = {
   name: CountryName;
-  tld: ['.be'];
-  currencies: {
-    EUR: {
-      name: string;
-      symbol: string;
-    };
-  };
+  tld: string[];
+  currencies: Currencies;
   capital: string[];
   region: string;
   subregion: string;
-  languages: {
-    deu: 'German';
-    fra: 'French';
-    nld: 'Dutch';
-  };
   borders: string[];
-  area: number;
   population: number;
   continents: string[];
   flags: CountryFlags;
+  languages: Languages;
 };
 
 export type CountryName = {
   common: string;
   official: string;
+  nativeName: NativeName;
+};
+
+export type NativeName = {
+  [country: string]: {
+    common: string;
+    official: string;
+  };
+};
+
+export type Currencies = {
+  [country: string]: {
+    name: string;
+    symbol: string;
+  };
 };
 
 export type CountryFlags = {
   png: string;
   svg: string;
   alt: string;
+};
+
+export type Languages = {
+  [country: string]: string;
 };
 
 export type CountryInfo = {

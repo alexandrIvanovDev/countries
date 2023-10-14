@@ -3,9 +3,9 @@ import {
   RouteObject,
   RouterProvider,
 } from 'react-router-dom';
-import { Layout } from './components/layout/Layout.tsx';
-import { MainPage } from './pages/main-page/MainPage.tsx';
-import { CountryPage } from './pages/country-page/CountryPage.tsx';
+import { Layout } from 'src/components/layout';
+import { MainPage } from 'src/pages/mainPage';
+import { CountryPage } from 'src/pages/countryPage';
 
 const routes: RouteObject[] = [
   {

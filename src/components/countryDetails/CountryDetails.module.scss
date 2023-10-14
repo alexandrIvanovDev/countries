@@ -17,7 +17,24 @@
   }
 
   .countryInformation {
-    margin: 2rem 5rem;
+    margin: 0 4rem;
+
+    .lists {
+      display: flex;
+      gap: 2rem
+    }
+
+    .list {
+      list-style: none;
+
+      .listItem {
+        margin-top: 0.75rem;
+
+        span {
+          font-weight: var(--fw-light);
+        }
+      }
+    }
 
     .title {
       font-weight: var(--fw-bold);
@@ -30,8 +47,13 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
+      margin-top: 4rem;
 
-      .borderBtn  {
+      div {
+        font-weight: var(--fw-light);
+      }
+
+      .borderBtn {
         color: var(--font-color);
         text-decoration: none;
       }

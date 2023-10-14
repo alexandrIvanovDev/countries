@@ -1,8 +1,8 @@
-import { SearchBlock } from '../../components/search-block/SearchBlock.tsx';
+import { SearchBlock } from 'src/components/searchBlock';
 import { useGetAllCountriesQuery } from '../../store/services/countries.ts';
-import { CountryCard } from '../../components/country-card/CountryCard.tsx';
+import { CountryCard } from 'src/components/countryCard';
 import cl from './MainPage.module.scss';
-import { Loader } from '../../components/loader/Loader.tsx';
+import { Loader } from 'src/components/loader';
 import { Country, CountryInfo } from '../../store/types/types.ts';
 import { useEffect, useState } from 'react';
 
@@ -20,7 +20,7 @@ const options: Array<Option> = [
 ];
 
 export const MainPage = () => {
-  const { data, isLoading } = useGetAllCountriesQuery('');
+  const { data, isLoading } = useGetAllCountriesQuery(null);
 
   const [filteredCountries, setFilteredCountries] = useState<Array<Country>>(
     []
