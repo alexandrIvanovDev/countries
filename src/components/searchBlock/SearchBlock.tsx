@@ -25,11 +25,7 @@ export const SearchBlock: FC<Props> = ({ searchCountry, options }) => {
   };
 
   useEffect(() => {
-    // console.log('mount');
     searchCountry(searchValue, selectedOption);
-    // return () => {
-    //   console.log('unmount');
-    // };
   }, [searchValue, selectedOption, value, option]);
 
   return (
@@ -39,7 +35,6 @@ export const SearchBlock: FC<Props> = ({ searchCountry, options }) => {
         options={options}
         onChange={onChangeOption}
         value={selectedOption}
-        setValue={setSelectedOption}
       />
     </div>
   );

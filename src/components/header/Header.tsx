@@ -1,16 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import cl from './Header.module.scss';
 import clContainer from '../../styles/Container.module.scss';
 import { IoMoonOutline, IoMoonSharp } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
-
-type Theme = 'light' | 'dark';
+import { changeTheme } from 'src/store/services/theme.ts';
+import { useAppSelector } from 'src/store/store.ts';
+import { useDispatch } from 'react-redux';
 
 export const Header = () => {
-  const [theme, setTheme] = useState<Theme>('light');
+  const { theme } = useAppSelector((state) => state.theme);
+
+  const dispatch = useDispatch();
 
   const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    dispatch(changeTheme(newTheme));
   };
 
   useEffect(() => {

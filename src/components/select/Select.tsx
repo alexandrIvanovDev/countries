@@ -8,23 +8,24 @@ type Props = {
   value: string;
   options: Array<Option>;
   onChange: (value: string) => void;
-  setValue: (value: string) => void;
 };
 
 export const Select: FC<Props> = ({ options, onChange, value }) => {
   const [open, setOpen] = useState(false);
-  // const [value, setValue] = useState('');
 
-  // const onValueChange = (e: string) => {
-  //   setValue(e);
-  //   onChange(e);
-  // };
+  const onValueChange = (value: string) => {
+    if (value === 'all') {
+      onChange('');
+    } else {
+      onChange(value);
+    }
+  };
 
   return (
     <RadixSelect.Root
       open={open}
       onOpenChange={(e) => setOpen(e)}
-      onValueChange={(e) => onChange(e)}
+      onValueChange={(e) => onValueChange(e)}
       value={value}
     >
       <RadixSelect.Trigger className={cl.trigger}>

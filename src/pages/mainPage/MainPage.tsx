@@ -6,8 +6,11 @@ import { Loader } from 'src/components/loader';
 import { Country, CountryInfo } from '../../store/types/types.ts';
 import { useEffect, useState } from 'react';
 import { Option } from 'src/store/services/filter.ts';
+import { useAppSelector } from 'src/store/store.ts';
+import { useLocation } from 'react-router-dom';
 
 const options: Array<Option> = [
+  { value: 'all', label: 'All' },
   { value: 'Africa', label: 'Africa' },
   { value: 'Americas', label: 'America' },
   { value: 'Asia', label: 'Asia' },
@@ -17,6 +20,9 @@ const options: Array<Option> = [
 
 export const MainPage = () => {
   const { data, isLoading } = useGetAllCountriesQuery(null);
+  const { value, option } = useAppSelector((state) => state.filter);
+
+  const location = useLocation();
 
   const [filteredCountries, setFilteredCountries] = useState<Array<Country>>(
     []
@@ -39,6 +45,9 @@ export const MainPage = () => {
   useEffect(() => {
     if (data) {
       setFilteredCountries([...data]);
+    }
+    if (location.pathname === '/') {
+      searchCountry(value, option);
     }
   }, [data]);
 

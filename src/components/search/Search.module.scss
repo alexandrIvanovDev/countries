@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 250px;
+  width: 300px;
   gap: 1rem;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -23,6 +23,12 @@
     &::placeholder {
       color: var(--input-color);
     }
+  }
+
+  .close {
+    cursor: pointer;
+    color: var(--font-color);
+  font-size: 1.5rem;
   }
 }
 

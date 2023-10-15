@@ -3,6 +3,7 @@ import cl from './Search.module.scss';
 import { ChangeEvent, FC, memo } from 'react';
 import { useDispatch } from 'react-redux';
 import { changeValue } from '../../store/services/filter.ts';
+import { IoMdClose } from 'react-icons/io';
 
 type Search = {
   value: string;
@@ -13,8 +14,14 @@ export const Search: FC<Search> = memo(({ value, setValue }) => {
   const dispatch = useDispatch();
 
   const onChangeValue = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.currentTarget.value);
-    dispatch(changeValue(e.currentTarget.value));
+    const newValue = e.currentTarget.value;
+    setValue(newValue);
+    dispatch(changeValue(newValue));
+  };
+
+  const clearInput = () => {
+    setValue('');
+    dispatch(changeValue(''));
   };
 
   return (
@@ -27,6 +34,7 @@ export const Search: FC<Search> = memo(({ value, setValue }) => {
         value={value}
         onChange={onChangeValue}
       />
+      <IoMdClose className={cl.close} onClick={clearInput} />
     </label>
   );
 });
