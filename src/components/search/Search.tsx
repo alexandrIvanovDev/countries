@@ -26,7 +26,7 @@ export const Search: FC<Search> = memo(({ value, setValue }) => {
 
   return (
     <label className={cl.label}>
-      <IoSearchSharp className={cl.icon} />
+      <IoSearchSharp className={cl.searchIcon} />
       <input
         type='text'
         placeholder='Search for a country...'
@@ -34,7 +34,11 @@ export const Search: FC<Search> = memo(({ value, setValue }) => {
         value={value}
         onChange={onChangeValue}
       />
-      <IoMdClose className={cl.close} onClick={clearInput} />
+      {value && (
+        <div className={cl.clearIconWrapper}>
+          <IoMdClose className={cl.clearIcon} onClick={clearInput} />
+        </div>
+      )}
     </label>
   );
 });
