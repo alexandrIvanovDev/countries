@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 export const filterSlice = createSlice({
   name: 'filter',
@@ -22,4 +22,9 @@ export const { changeValue, changeOption } = filterSlice.actions;
 type InitialState = {
   value: string;
   option: string;
+};
+
+export type Option = {
+  value: string;
+  label: string;
 };

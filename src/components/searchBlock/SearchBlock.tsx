@@ -1,11 +1,10 @@
 import { Search } from '../search/Search.tsx';
 import cl from './SearchBlock.module.scss';
 import { FC, useEffect, useState } from 'react';
-import { Option } from 'src/pages/mainPage';
-import Select, { SingleValue } from 'react-select';
 import { useAppSelector } from '../../store/store.ts';
 import { useDispatch } from 'react-redux';
-import { changeOption } from '../../store/services/filter.ts';
+import { changeOption, Option } from '../../store/services/filter.ts';
+import { Select } from 'src/components/select/Select.tsx';
 
 type Props = {
   searchCountry: (value: string, region: string) => void;
@@ -20,9 +19,9 @@ export const SearchBlock: FC<Props> = ({ searchCountry, options }) => {
   const [searchValue, setSearchValue] = useState(value);
   const [selectedOption, setSelectedOption] = useState(option);
 
-  const onChangeSelect = (e: SingleValue<Option>) => {
-    setSelectedOption(e?.value || '');
-    dispatch(changeOption(e?.value || ''));
+  const onChangeOption = (value: string) => {
+    setSelectedOption(value);
+    dispatch(changeOption(value));
   };
 
   useEffect(() => {
@@ -38,10 +37,9 @@ export const SearchBlock: FC<Props> = ({ searchCountry, options }) => {
       <Search value={searchValue} setValue={setSearchValue} />
       <Select
         options={options}
-        placeholder='Filter by region'
-        onChange={onChangeSelect}
-        isClearable
-        className={cl.select}
+        onChange={onChangeOption}
+        value={selectedOption}
+        setValue={setSelectedOption}
       />
     </div>
   );

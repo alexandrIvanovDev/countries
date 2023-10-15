@@ -45,7 +45,7 @@ export const CountryDetails: FC<Props> = ({ country }) => {
   ];
 
   const extraInfo: InfoType[] = [
-    { title: 'Top Level Domain', description: country.tld.join(', ') },
+    { title: 'Top Level Domain', description: country.tld?.join(', ') },
     { title: 'Currencies', description: currencies.join(', ') },
     { title: 'Languages', description: languages.join(', ') },
   ];

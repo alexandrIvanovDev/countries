@@ -60,3 +60,46 @@
     }
   }
 }
+
+@media (max-width: 900px) {
+  .country {
+    .flag {
+      width: 400px;
+    }
+
+    .countryInformation {
+      margin: 0 1rem 0 2rem;
+
+      .lists {
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .country {
+    .flag {
+      width: 300px;
+    }
+  }
+}
+
+@media (max-width: 580px) {
+  .wrapper {
+    .btnBack {
+      margin: 2rem 0;
+    }
+  }
+  .country {
+    flex-direction: column;
+
+    .flag {
+      width: 100%;
+    }
+
+    .countryInformation {
+      margin: 2rem 0;
+    }
+  }
+}

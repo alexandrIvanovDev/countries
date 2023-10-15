@@ -6,21 +6,20 @@
 
 @media (max-width: 1170px) {
   .countries {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 1rem;
+    grid-template-columns: repeat(3, auto);
   }
 }
 
 @media (max-width: 870px) {
   .countries {
+    grid-template-columns: repeat(2, auto);
     justify-content: space-around;
   }
 }
 
 @media (max-width: 580px) {
   .countries {
+    grid-template-columns: repeat(1, auto);
     justify-content: center;
   }
 }

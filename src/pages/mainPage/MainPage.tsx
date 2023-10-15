@@ -5,11 +5,7 @@ import cl from './MainPage.module.scss';
 import { Loader } from 'src/components/loader';
 import { Country, CountryInfo } from '../../store/types/types.ts';
 import { useEffect, useState } from 'react';
-
-export type Option = {
-  value: string;
-  label: string;
-};
+import { Option } from 'src/store/services/filter.ts';
 
 const options: Array<Option> = [
   { value: 'Africa', label: 'Africa' },
