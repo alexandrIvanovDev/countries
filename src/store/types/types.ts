@@ -1,21 +1,21 @@
 export type Country = {
-  name: CountryName;
-  tld: string[];
-  currencies: Currencies;
-  capital: string[];
-  region: string;
-  subregion: string;
   borders: string[];
-  population: number;
+  capital: string[];
   continents: string[];
+  currencies: Currencies;
   flags: CountryFlags;
   languages: Languages;
+  name: CountryName;
+  population: number;
+  region: string;
+  subregion: string;
+  tld: string[];
 };
 
 export type CountryName = {
   common: string;
-  official: string;
   nativeName: NativeName;
+  official: string;
 };
 
 export type NativeName = {
@@ -33,9 +33,9 @@ export type Currencies = {
 };
 
 export type CountryFlags = {
+  alt: string;
   png: string;
   svg: string;
-  alt: string;
 };
 
 export type Languages = {
@@ -43,12 +43,12 @@ export type Languages = {
 };
 
 export type CountryInfo = {
-  name: CountryName;
   flags: CountryFlags;
   info: InfoType[];
+  name: CountryName;
 };
 
 export type InfoType = {
+  description: number | string | string[];
   title: string;
-  description: string | number | string[];
 };

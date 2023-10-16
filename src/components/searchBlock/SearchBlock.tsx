@@ -1,14 +1,17 @@
-import { Search } from '../search/Search.tsx';
-import cl from './SearchBlock.module.scss';
 import { FC, useEffect, useState } from 'react';
-import { useAppSelector } from '../../store/store.ts';
 import { useDispatch } from 'react-redux';
-import { changeOption, Option } from '../../store/services/filter.ts';
-import { Select } from 'src/components/select/Select.tsx';
+
+import { Option, changeOption } from 'store/services/filter.ts';
+import { useAppSelector } from 'store/store.ts';
+
+import { Search } from 'components/search';
+import { Select } from 'components/select/Select.tsx';
+
+import cl from './SearchBlock.module.scss';
 
 type Props = {
-  searchCountry: (value: string, region: string) => void;
   options: Array<Option>;
+  searchCountry: (value: string, region: string) => void;
 };
 
 export const SearchBlock: FC<Props> = ({ searchCountry, options }) => {
@@ -26,15 +29,15 @@ export const SearchBlock: FC<Props> = ({ searchCountry, options }) => {
 
   useEffect(() => {
     searchCountry(searchValue, selectedOption);
-  }, [searchValue, selectedOption, value, option]);
+  }, [searchValue, selectedOption]);
 
   return (
     <div className={cl.wrapper}>
       <Search value={searchValue} setValue={setSearchValue} />
       <Select
         options={options}
-        onChange={onChangeOption}
         value={selectedOption}
+        onChange={onChangeOption}
       />
     </div>
   );

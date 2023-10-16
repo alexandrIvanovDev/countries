@@ -1,4 +1,4 @@
-import { Languages } from '../store/types/types.ts';
+import { Languages } from 'store/types/types.ts';
 
 export const getLanguages = (languages: Languages) => {
   const res: Array<string> = [];

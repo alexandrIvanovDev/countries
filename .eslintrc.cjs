@@ -5,6 +5,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
+    'plugin:perfectionist/recommended-natural',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
@@ -14,5 +15,51 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    'perfectionist/sort-objects': 'off',
+    'perfectionist/sort-imports': [
+      'error',
+      {
+        type: 'natural',
+        order: 'asc',
+        groups: [
+          'type',
+          'react',
+          'nanostores',
+          ['builtin', 'external'],
+          'internal-type',
+          'internal',
+          ['parent-type', 'sibling-type', 'index-type'],
+          ['parent', 'sibling', 'index'],
+          'side-effect',
+          'style',
+          'object',
+          'unknown',
+        ],
+        'custom-groups': {
+          value: {
+            react: ['react', 'react-*'],
+            nanostores: '@nanostores/**',
+          },
+          type: {
+            react: 'react'
+          }
+        },
+        'newlines-between': 'always',
+        'internal-pattern': [
+          'components/**',
+          'stores/**',
+          'pages/**',
+          'utils/**',
+        ],
+      },
+    ],
+    'perfectionist/sort-jsx-props': [
+      'warn',
+      {
+        'type': 'line-length',
+        'order': 'asc',
+      },
+    ],
   },
-};
+}
+;

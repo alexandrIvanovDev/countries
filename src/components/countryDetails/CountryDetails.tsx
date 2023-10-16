@@ -1,17 +1,19 @@
-import { Button } from '../button/Button.tsx';
-import { Link, useNavigate } from 'react-router-dom';
 import { FC, useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
+import { useGetCountryBorderQuery } from 'store/services/countries.ts';
+import { Country, InfoType } from 'store/types/types.ts';
+
+import { Button } from 'components/button';
+import { Loader } from 'components/loader';
+import { getCurrencies } from 'utils/getCurrencies.ts';
+import { getLanguages } from 'utils/getLanguages.ts';
+import { getNativeName } from 'utils/getNativeName.ts';
+
 import cl from './CountryDetails.module.scss';
-import { useGetCountryBorderQuery } from '../../store/services/countries.ts';
-import { Loader } from '../loader/Loader.tsx';
-import { Country, InfoType } from '../../store/types/types.ts';
-import { getCurrencies } from '../../utils/getCurrencies.ts';
-import { getLanguages } from '../../utils/getLanguages.ts';
-import { getNativeName } from '../../utils/getNativeName.ts';
 
 type Props = {
   country: Country;
-  // borderData: any;
 };
 
 export const CountryDetails: FC<Props> = ({ country }) => {
@@ -52,38 +54,33 @@ export const CountryDetails: FC<Props> = ({ country }) => {
 
   return (
     <div>
-      {/*{error && (*/}
-      {/*  <h3 style={{ textAlign: 'center', margin: '3rem' }}>*/}
-      {/*    {error.data.message}*/}
-      {/*  </h3>*/}
-      {/*)}*/}
       {isLoading && <Loader />}
       {country && (
         <div className={cl.wrapper}>
           <div className={cl.btnBack}>
-            <Button withIcon={true} onClick={() => navigate(-1)}>
+            <Button withIcon onClick={() => navigate(-1)}>
               Back
             </Button>
           </div>
           <div className={cl.country}>
             <img
-              src={country.flags.svg}
-              alt={country.flags.alt}
               className={cl.flag}
+              alt={country.flags.alt}
+              src={country.flags.svg}
             />
             <div className={cl.countryInformation}>
               <h2 className={cl.title}>{country.name.official}</h2>
               <div className={cl.lists}>
                 <ul className={cl.list}>
                   {info.map((info) => (
-                    <li className={cl.listItem} key={info.title}>
+                    <li key={info.title} className={cl.listItem}>
                       {info.title}:<span> {info.description}</span>
                     </li>
                   ))}
                 </ul>
                 <ul className={cl.list}>
                   {extraInfo.map((info) => (
-                    <li className={cl.listItem} key={info.title}>
+                    <li key={info.title} className={cl.listItem}>
                       {info.title}:<span> {info.description}</span>
                     </li>
                   ))}
@@ -94,9 +91,9 @@ export const CountryDetails: FC<Props> = ({ country }) => {
                 {data ? (
                   data.map((b) => (
                     <Link
-                      to={`/country/${b.name.official}`}
-                      className={cl.borderBtn}
                       key={b.name.official}
+                      className={cl.borderBtn}
+                      to={`/country/${b.name.official}`}
                     >
                       <Button withIcon={false}>{b.name.common}</Button>
                     </Link>

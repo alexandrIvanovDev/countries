@@ -11,13 +11,12 @@
   display: flex;
 
   .flag {
-    width: 50%;
-    height: 50%;
-    box-shadow: var(--shadow);
+    width: 500px;
+    height: 350px;
   }
 
   .countryInformation {
-    margin: 0 4rem;
+    margin: 2rem 4rem;
 
     .lists {
       display: flex;
@@ -29,6 +28,7 @@
 
       .listItem {
         margin-top: 0.75rem;
+        font-weight: var(--fw-bold);
 
         span {
           font-weight: var(--fw-light);
@@ -96,6 +96,7 @@
 
     .flag {
       width: 100%;
+      height: 50%;
     }
 
     .countryInformation {

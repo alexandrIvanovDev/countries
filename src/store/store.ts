@@ -1,11 +1,13 @@
+import { TypedUseSelectorHook, useSelector } from 'react-redux';
+
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { countriesApi } from './services/countries.ts';
-import { filterSlice } from './services/filter.ts';
-import { TypedUseSelectorHook, useSelector } from 'react-redux';
-import { themeSlice } from 'src/store/services/theme.ts';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+
+import { countriesApi } from './services/countries.ts';
+import { filterSlice } from './services/filter.ts';
+import { themeSlice } from './services/theme.ts';
 
 const rootReducer = combineReducers({
   [countriesApi.reducerPath]: countriesApi.reducer,

@@ -1,10 +1,12 @@
-import cl from './Button.module.scss';
-import { FaArrowLeftLong } from 'react-icons/fa6';
 import { ButtonHTMLAttributes, FC } from 'react';
 
+import { FaArrowLeftLong } from 'react-icons/fa6';
+
+import cl from './Button.module.scss';
+
 type Button = {
-  withIcon: boolean;
   addClass?: string;
+  withIcon: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Button: FC<Button> = (props) => {

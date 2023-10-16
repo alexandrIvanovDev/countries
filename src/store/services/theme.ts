@@ -1,4 +1,5 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
+
 import { createSlice } from '@reduxjs/toolkit';
 
 export const themeSlice = createSlice({
@@ -15,4 +16,4 @@ export const themeSlice = createSlice({
 
 export const { changeTheme } = themeSlice.actions;
 
-export type Theme = 'light' | 'dark';
+export type Theme = 'dark' | 'light';

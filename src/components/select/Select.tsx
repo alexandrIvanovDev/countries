@@ -1,16 +1,18 @@
-import * as RadixSelect from '@radix-ui/react-select';
-import { ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
 import { FC, useState } from 'react';
+
+import { ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
+import * as RadixSelect from '@radix-ui/react-select';
+import { Option } from 'store/services/filter.ts';
+
 import cl from './Select.module.scss';
-import { Option } from 'src/store/services/filter.ts';
 
 type Props = {
-  value: string;
-  options: Array<Option>;
   onChange: (value: string) => void;
+  options: Array<Option>;
+  value: string;
 };
 
-export const Select: FC<Props> = ({ options, onChange, value }) => {
+export const Select: FC<Props> = ({ onChange, options, value }) => {
   const [open, setOpen] = useState(false);
 
   const onValueChange = (value: string) => {
@@ -24,9 +26,9 @@ export const Select: FC<Props> = ({ options, onChange, value }) => {
   return (
     <RadixSelect.Root
       open={open}
+      value={value}
       onOpenChange={(e) => setOpen(e)}
       onValueChange={(e) => onValueChange(e)}
-      value={value}
     >
       <RadixSelect.Trigger className={cl.trigger}>
         <RadixSelect.Value placeholder='Filter By Region' />
@@ -36,9 +38,9 @@ export const Select: FC<Props> = ({ options, onChange, value }) => {
       </RadixSelect.Trigger>
       <RadixSelect.Portal>
         <RadixSelect.Content
-          className={cl.content}
-          position='popper'
           sideOffset={5}
+          position='popper'
+          className={cl.content}
           hideWhenDetached={true}
         >
           <RadixSelect.ScrollUpButton className='SelectScrollButton'>
@@ -48,8 +50,8 @@ export const Select: FC<Props> = ({ options, onChange, value }) => {
             <RadixSelect.Group>
               {options.map((o) => (
                 <RadixSelect.Item
-                  value={o.value}
                   key={o.value}
+                  value={o.value}
                   className={cl.item}
                 >
                   <RadixSelect.ItemText>{o.label}</RadixSelect.ItemText>

@@ -1,11 +1,13 @@
 import {
-  createBrowserRouter,
   RouteObject,
   RouterProvider,
+  createBrowserRouter,
 } from 'react-router-dom';
-import { Layout } from 'src/components/layout';
-import { MainPage } from 'src/pages/mainPage';
-import { CountryPage } from 'src/pages/countryPage';
+
+import { Layout } from 'components/layout';
+import { CountryPage } from 'pages/countryPage';
+import { MainPage } from 'pages/mainPage';
+import { NotFoundPage } from 'pages/notFoundPage/NotFoundPage.tsx';
 
 const routes: RouteObject[] = [
   {
@@ -15,6 +17,10 @@ const routes: RouteObject[] = [
   {
     path: '/country/:name',
     element: <CountryPage />,
+  },
+  {
+    path: '/*',
+    element: <NotFoundPage />,
   },
 ];
 

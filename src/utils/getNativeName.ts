@@ -1,4 +1,4 @@
-import { NativeName } from '../store/types/types.ts';
+import { NativeName } from 'store/types/types.ts';
 
 export const getNativeName = (name: NativeName) => {
   const res: Array<string> = [];

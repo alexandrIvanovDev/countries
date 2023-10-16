@@ -1,13 +1,15 @@
-import { IoSearchSharp } from 'react-icons/io5';
-import cl from './Search.module.scss';
 import { ChangeEvent, FC, memo } from 'react';
 import { useDispatch } from 'react-redux';
-import { changeValue } from '../../store/services/filter.ts';
+
 import { IoMdClose } from 'react-icons/io';
+import { IoSearchSharp } from 'react-icons/io5';
+import { changeValue } from 'store/services/filter.ts';
+
+import cl from './Search.module.scss';
 
 type Search = {
-  value: string;
   setValue: (value: string) => void;
+  value: string;
 };
 
 export const Search: FC<Search> = memo(({ value, setValue }) => {
@@ -29,14 +31,14 @@ export const Search: FC<Search> = memo(({ value, setValue }) => {
       <IoSearchSharp className={cl.searchIcon} />
       <input
         type='text'
-        placeholder='Search for a country...'
-        className={cl.input}
         value={value}
+        className={cl.input}
         onChange={onChangeValue}
+        placeholder='Search for a country...'
       />
       {value && (
         <div className={cl.clearIconWrapper}>
-          <IoMdClose className={cl.clearIcon} onClick={clearInput} />
+          <IoMdClose onClick={clearInput} className={cl.clearIcon} />
         </div>
       )}
     </label>

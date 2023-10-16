@@ -1,7 +1,9 @@
 import { Outlet } from 'react-router-dom';
+
+import { Header } from 'components/header';
+
 import cl from './Layout.module.scss';
-import clContainer from '../../styles/Container.module.scss';
-import { Header } from 'src/components/header';
+import clContainer from 'styles/Container.module.scss';
 
 export const Layout = () => {
   return (

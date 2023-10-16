@@ -1,13 +1,16 @@
-import { SearchBlock } from 'src/components/searchBlock';
-import { useGetAllCountriesQuery } from '../../store/services/countries.ts';
-import { CountryCard } from 'src/components/countryCard';
-import cl from './MainPage.module.scss';
-import { Loader } from 'src/components/loader';
-import { Country, CountryInfo } from '../../store/types/types.ts';
 import { useEffect, useState } from 'react';
-import { Option } from 'src/store/services/filter.ts';
-import { useAppSelector } from 'src/store/store.ts';
 import { useLocation } from 'react-router-dom';
+
+import { useGetAllCountriesQuery } from 'store/services/countries.ts';
+import { Option } from 'store/services/filter.ts';
+import { useAppSelector } from 'store/store.ts';
+import { Country, CountryInfo } from 'store/types/types.ts';
+
+import { CountryCard } from 'components/countryCard';
+import { Loader } from 'components/loader';
+import { SearchBlock } from 'components/searchBlock';
+
+import cl from './MainPage.module.scss';
 
 const options: Array<Option> = [
   { value: 'all', label: 'All' },
@@ -53,7 +56,7 @@ export const MainPage = () => {
 
   return (
     <div>
-      <SearchBlock searchCountry={searchCountry} options={options} />
+      <SearchBlock options={options} searchCountry={searchCountry} />
       <div className={cl.countries}>
         {isLoading && <Loader />}
         {filteredCountries.map((c) => {
@@ -76,7 +79,7 @@ export const MainPage = () => {
             ],
           };
           return (
-            <CountryCard countryInfo={countryInfo} key={c.name.official} />
+            <CountryCard key={c.name.official} countryInfo={countryInfo} />
           );
         })}
       </div>

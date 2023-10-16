@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
-import cl from './Header.module.scss';
-import clContainer from '../../styles/Container.module.scss';
-import { IoMoonOutline, IoMoonSharp } from 'react-icons/io5';
-import { Link } from 'react-router-dom';
-import { changeTheme } from 'src/store/services/theme.ts';
-import { useAppSelector } from 'src/store/store.ts';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+import { IoMoonOutline, IoMoonSharp } from 'react-icons/io5';
+import { changeTheme } from 'store/services/theme.ts';
+import { useAppSelector } from 'store/store.ts';
+
+import cl from './Header.module.scss';
+import clContainer from 'styles/Container.module.scss';
 
 export const Header = () => {
   const { theme } = useAppSelector((state) => state.theme);
