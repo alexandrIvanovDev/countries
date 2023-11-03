@@ -2,10 +2,11 @@ import { ChangeEvent, FC, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { useAppSelector } from '@/shared/lib';
+import { Option } from '@/shared/types';
 import { Search } from '@/shared/ui/search';
 import { Select } from '@/shared/ui/select';
 
-import { Option, changeOption, changeValue } from '../model';
+import { changeOption, changeValue } from '../model';
 
 import cl from './SearchCountry.module.scss';
 
