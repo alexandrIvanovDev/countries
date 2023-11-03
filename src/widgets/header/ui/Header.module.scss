@@ -1,0 +1,34 @@
+.header {
+  height: 80px;
+  background: var(--primary--color);
+  display: flex;
+  align-items: center;
+  box-shadow: var(--shadow);
+  width: 100%;
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    .title {
+      color: var(--font-color);
+      text-decoration: none;
+    }
+  }
+}
+
+@media (max-width: 580px) {
+  .header {
+    .wrapper {
+      align-items: baseline;
+      height: 45px;
+
+      .title {
+        font-weight: var(--fw-bold);
+        font-size: 1rem
+      }
+    }
+  }
+}

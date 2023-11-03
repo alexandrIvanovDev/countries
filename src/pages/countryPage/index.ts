@@ -1,1 +1,1 @@
-export * from './CountryPage.tsx';
+export * from './ui/CountryPage.tsx';

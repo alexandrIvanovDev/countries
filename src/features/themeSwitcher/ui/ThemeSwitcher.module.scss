@@ -1,0 +1,14 @@
+.themeSwitcher {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: var(--fs-medium);
+}
+
+@media (max-width: 580px) {
+  .themeSwitcher {
+    font-size: var(--fs-small);
+  }
+}

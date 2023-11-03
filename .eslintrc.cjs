@@ -16,6 +16,13 @@ module.exports = {
       { allowConstantExport: true },
     ],
     'perfectionist/sort-objects': 'off',
+    'perfectionist/sort-object-types': [
+      "warn",
+      {
+        "type": "line-length",
+        "order": "asc",
+      }
+    ],
     'perfectionist/sort-imports': [
       'error',
       {
