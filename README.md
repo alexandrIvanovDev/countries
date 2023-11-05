@@ -22,8 +22,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://www.frontendmentor.io/solutions/rest-countries-api-with-color-theme-switcher-BXgFyY0O8z)
-- Live Site URL: [Add live site URL here](https://countries-xi-six.vercel.app)
+- Solution URL: [link](https://www.frontendmentor.io/solutions/rest-countries-api-with-color-theme-switcher-BXgFyY0O8z)
+- Live Site URL: [link](https://countries-xi-six.vercel.app)
 
 ### Built with
 
