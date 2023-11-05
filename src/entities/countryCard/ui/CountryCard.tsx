@@ -14,7 +14,9 @@ export const CountryCard: FC<CountryCard> = ({ countryInfo }) => {
 
   return (
     <Link className={cl.wrapper} to={`/country/${name.official}`}>
-      <img alt={flags.alt} src={flags.png} className={cl.img} />
+      <div className={cl.imgWrapper}>
+        <img alt={flags.alt} src={flags.png} className={cl.img} />
+      </div>
       <div className={cl.information}>
         <h3 className={cl.title}>{name.common}</h3>
         {info.map((i) => (
